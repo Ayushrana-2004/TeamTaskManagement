@@ -1,21 +1,24 @@
 package com.app.taskmanager.security;
 
 import com.app.taskmanager.model.User;
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.Collections;
 
-@Data
-@AllArgsConstructor
 public class CustomUserDetails implements UserDetails {
     private Long id;
     private String email;
     private String password;
     private Collection<? extends GrantedAuthority> authorities;
+
+    public CustomUserDetails(Long id, String email, String password, Collection<? extends GrantedAuthority> authorities) {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.authorities = authorities;
+    }
 
     public static CustomUserDetails build(User user) {
         GrantedAuthority authority = new SimpleGrantedAuthority(user.getRole().name());
@@ -26,7 +29,11 @@ public class CustomUserDetails implements UserDetails {
                 Collections.singletonList(authority));
     }
 
+    public Long getId() { return id; }
+
     @Override public String getUsername() { return email; }
+    @Override public String getPassword() { return password; }
+    @Override public Collection<? extends GrantedAuthority> getAuthorities() { return authorities; }
     @Override public boolean isAccountNonExpired() { return true; }
     @Override public boolean isAccountNonLocked() { return true; }
     @Override public boolean isCredentialsNonExpired() { return true; }
