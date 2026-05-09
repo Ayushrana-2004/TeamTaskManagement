@@ -1,4 +1,6 @@
 # Team Task Manager
+# deployed link
+https://miraculous-embrace-production-2ca3.up.railway.app/project/3
 
 A full-stack team task management application with role-based access control (RBAC), JWT authentication, and a Kanban-style task board.
 
