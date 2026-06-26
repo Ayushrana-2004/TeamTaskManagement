@@ -4,11 +4,6 @@ https://miraculous-embrace-production-2ca3.up.railway.app/project/3
 
 A full-stack team task management application with role-based access control (RBAC), JWT authentication, and a Kanban-style task board.
 
-## Live Demo
-
-- **Frontend**: *(add Railway URL after deployment)*
-- **Backend API**: *(add Railway URL after deployment)*
-
 ---
 
 ## Tech Stack
